@@ -12,7 +12,11 @@ import SwiftData
 struct mapApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Position.self,
+            Style.self,
+            NoteItem.self,
+            Stack.self,
+            Map.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -30,3 +34,4 @@ struct mapApp: App {
         .modelContainer(sharedModelContainer)
     }
 }
+
