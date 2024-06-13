@@ -8,7 +8,6 @@
 import Foundation
 import SwiftData
 
-@Model
 class Style {
     var name: String?
     var borderColor: String?

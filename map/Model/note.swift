@@ -12,14 +12,12 @@ import SwiftUI
 class NoteItem: Identifiable {
     var id: UUID = UUID()
     var textContent: String
-    var position: Position
+    var position: CGPoint
     var lastInteraction: Date
-    var style: Style?
     
-    init(textContent: String, position: Position, lastInteraction: Date, style: Style? = nil) {
+    init(textContent: String, position: CGPoint, lastInteraction: Date) {
         self.textContent = textContent
         self.position = position
         self.lastInteraction = lastInteraction
-        self.style = style
     }
 }

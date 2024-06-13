@@ -8,69 +8,59 @@
 import SwiftUI
 
 struct InfiniteCanvasView: View {
-    @Bindable var viewModel = CanvasViewModel()
-    @State private var newItemText = ""
-    @State private var offset = CGSize.zero
     @State private var scale: CGFloat = 1.0
-    @State private var lastDragPosition = CGSize.zero
-    @State private var lastScaleValue: CGFloat = 1.0
+    @State private var offset: CGSize = .zero
     
     var body: some View {
         GeometryReader { geometry in
-            ZStack {
-                ForEach(viewModel.currentMap?.stacks ?? []) { stack in
-                    StackView(viewModel: viewModel, stack: stack)
-                }
-                .contentShape(Rectangle())
+            CanvasView()
                 .scaleEffect(scale)
-                .offset(x: offset.width + lastDragPosition.width, y: offset.height + lastDragPosition.height)
-                .gesture(
-                    DragGesture()
-                        .onChanged { value in
-                            lastDragPosition = value.translation
-                        }
-                        .onEnded { value in
-                            offset.width += value.translation.width
-                            offset.height += value.translation.height
-                            lastDragPosition = .zero
-                        }
-                )
+                .offset(offset)
                 .gesture(
                     MagnificationGesture()
                         .onChanged { value in
-                            scale = lastScaleValue * value
-                        }
-                        .onEnded { value in
-                            lastScaleValue = scale
+                            self.scale = value.magnitude
                         }
                 )
-                .onTapGesture(count: 2) {
-                    let position = Position(x: geometry.size.width / 2, y: geometry.size.height / 2)
-                    if let map = viewModel.currentMap {
-                        viewModel.addStack(to: map, at: position)
-                    }
-                }
-                
-                VStack {
-                    Spacer()
-                    HStack {
-                        TextField("New Item", text: $newItemText, onCommit: {
-                            if let lastStack = viewModel.currentMap?.stacks.last {
-                                viewModel.addItem(to: lastStack, text: newItemText)
-                                newItemText = ""
+                .gesture(
+                    DragGesture()
+                        .onChanged { value in
+                            self.offset = value.translation
+                        }
+                )
+                .frame(width: geometry.size.width * 2, height: geometry.size.height * 2)
+                .background(Color.white)
+        }
+    }
+}
+
+struct CanvasView: View {
+    @State private var notes: [NoteItem] = []
+    
+    var body: some View {
+        ZStack {
+            ForEach(notes) { note in
+                Text(note.textContent)
+                    .position(note.position)
+                    .background(Color.yellow)
+                    .gesture(
+                        DragGesture()
+                            .onChanged { value in
+                                if let index = self.notes.firstIndex(where: { $0.id == note.id }) {
+                                    self.notes[index].position = value.location
+                                }
                             }
-                        })
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
-                        .keyboardShortcut(KeyEquivalent("\r"), modifiers: .command)
-                    }
-                }
+                    )
             }
         }
         .background(Color.white)
-        .edgesIgnoringSafeArea(.all)
-        .onAppear {
-            viewModel.loadMaps()
+        .onTapGesture {
+            let newNote = NoteItem(
+                textContent: "New Note",
+                position: CGPoint(x: 100, y: 100),
+                lastInteraction: Date()
+            )
+            self.notes.append(newNote)
         }
     }
 }

@@ -10,19 +10,19 @@ import SwiftUI
 
 
 
-@Model
-class Map: Identifiable {
-    var id: UUID = UUID()
-    var name: String
-    var lastInteraction: Date
-    var canvasTransform: String
-    var stacks: [Stack] = []
-//    var areas: [Area]? = nil
-//    var connections: [Connection]? = nil
-    
-    init(name: String, lastInteraction: Date, canvasTransform: String) {
-        self.name = name
-        self.lastInteraction = lastInteraction
-        self.canvasTransform = canvasTransform
-    }
-}
+//@Model
+//class Map: Identifiable {
+//    var id: UUID = UUID()
+//    var name: String
+//    var lastInteraction: Date
+//    var canvasTransform: String
+//    var stacks: [Stack] = []
+////    var areas: [Area]? = nil
+////    var connections: [Connection]? = nil
+//    
+//    init(name: String, lastInteraction: Date, canvasTransform: String) {
+//        self.name = name
+//        self.lastInteraction = lastInteraction
+//        self.canvasTransform = canvasTransform
+//    }
+//}

@@ -12,11 +12,9 @@ import SwiftData
 struct mapApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Position.self,
-            Style.self,
-            NoteItem.self,
-            Stack.self,
-            Map.self,
+//            NoteItem.self,
+//            Stack.self,
+//            Map.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

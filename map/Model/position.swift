@@ -8,7 +8,6 @@
 import Foundation
 import SwiftData
 
-@Model
 class Position {
     var x: CGFloat
     var y: CGFloat

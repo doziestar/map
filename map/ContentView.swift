@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        InfiniteCanvasView()
-            .modelContainer(for: [Stack.self, Map.self], inMemory: true)
+        DashboardView()
+//            .modelContainer(for: [Stack.self, Map.self], inMemory: true)
     }
 }
 

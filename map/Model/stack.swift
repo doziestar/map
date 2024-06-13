@@ -8,20 +8,18 @@
 import SwiftData
 import SwiftUI
 
-@Model
-class Stack: Identifiable {
-    var id: UUID = UUID()
-    var items: [NoteItem] = []
-    var position: Position
-    var lastInteraction: Date
-    var style: Style?
-    
-    init(id: UUID, items: [NoteItem], position: Position, lastInteraction: Date, style: Style? = nil) {
-        self.id = id
-        self.items = items
-        self.position = position
-        self.lastInteraction = lastInteraction
-        self.style = style
-    }
-  
-}
+//@Model
+//class Stack: Identifiable {
+//    var id: UUID = UUID()
+//    var items: [NoteItem] = []
+//    var position: Position
+//    var lastInteraction: Date
+//    
+//    init(id: UUID, items: [NoteItem], position: Position, lastInteraction: Date) {
+//        self.id = id
+//        self.items = items
+//        self.position = position
+//        self.lastInteraction = lastInteraction
+//    }
+//  
+//}

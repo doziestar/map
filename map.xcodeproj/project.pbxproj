@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13CFB6DB2C1B7B0400474B92 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB6DA2C1B7B0400474B92 /* Sidebar.swift */; };
+		13CFB6DD2C1B7B3B00474B92 /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB6DC2C1B7B3B00474B92 /* FolderView.swift */; };
+		13CFB6E02C1B7B9B00474B92 /* DashboardContentArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB6DF2C1B7B9B00474B92 /* DashboardContentArea.swift */; };
+		13CFB6E22C1B7BBE00474B92 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB6E12C1B7BBE00474B92 /* HeaderView.swift */; };
+		13CFB6E42C1B7BD600474B92 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB6E32C1B7BD600474B92 /* DashboardView.swift */; };
+		13CFB6E62C1B7C3200474B92 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB6E52C1B7C3200474B92 /* OverviewView.swift */; };
+		13CFB6E82C1B7C5900474B92 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB6E72C1B7C5900474B92 /* NotificationView.swift */; };
+		13CFB6EA2C1B7C8900474B92 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB6E92C1B7C8900474B92 /* SettingsView.swift */; };
+		13CFB6EC2C1B7C9D00474B92 /* StarredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB6EB2C1B7C9D00474B92 /* StarredView.swift */; };
 		13D3FED92C19B4F000D9179C /* mapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D3FED82C19B4F000D9179C /* mapApp.swift */; };
 		13D3FEDB2C19B4F000D9179C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D3FEDA2C19B4F000D9179C /* ContentView.swift */; };
 		13D3FEDF2C19B4F100D9179C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13D3FEDE2C19B4F100D9179C /* Assets.xcassets */; };
@@ -42,6 +51,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13CFB6DA2C1B7B0400474B92 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
+		13CFB6DC2C1B7B3B00474B92 /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
+		13CFB6DF2C1B7B9B00474B92 /* DashboardContentArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardContentArea.swift; sourceTree = "<group>"; };
+		13CFB6E12C1B7BBE00474B92 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		13CFB6E32C1B7BD600474B92 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		13CFB6E52C1B7C3200474B92 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
+		13CFB6E72C1B7C5900474B92 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		13CFB6E92C1B7C8900474B92 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		13CFB6EB2C1B7C9D00474B92 /* StarredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredView.swift; sourceTree = "<group>"; };
 		13D3FED52C19B4F000D9179C /* map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = map.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13D3FED82C19B4F000D9179C /* mapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapApp.swift; sourceTree = "<group>"; };
 		13D3FEDA2C19B4F000D9179C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +106,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13CFB6D92C1B7AF400474B92 /* dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				13CFB6DA2C1B7B0400474B92 /* Sidebar.swift */,
+				13CFB6DC2C1B7B3B00474B92 /* FolderView.swift */,
+				13CFB6DF2C1B7B9B00474B92 /* DashboardContentArea.swift */,
+				13CFB6E12C1B7BBE00474B92 /* HeaderView.swift */,
+				13CFB6E32C1B7BD600474B92 /* DashboardView.swift */,
+				13CFB6E52C1B7C3200474B92 /* OverviewView.swift */,
+				13CFB6E72C1B7C5900474B92 /* NotificationView.swift */,
+				13CFB6E92C1B7C8900474B92 /* SettingsView.swift */,
+				13CFB6EB2C1B7C9D00474B92 /* StarredView.swift */,
+			);
+			path = dashboard;
+			sourceTree = "<group>";
+		};
 		13D3FECC2C19B4F000D9179C = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +197,7 @@
 		13D3FF122C1AE55700D9179C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				13CFB6D92C1B7AF400474B92 /* dashboard */,
 				13D3FF152C1AE59600D9179C /* StackView.swift */,
 				13D3FF172C1AE61300D9179C /* InfinityCanvas.swift */,
 			);
@@ -301,14 +336,23 @@
 			files = (
 				13D3FF0B2C1AE23A00D9179C /* map.swift in Sources */,
 				13D3FF072C1ADC9900D9179C /* stack.swift in Sources */,
+				13CFB6DD2C1B7B3B00474B92 /* FolderView.swift in Sources */,
+				13CFB6EA2C1B7C8900474B92 /* SettingsView.swift in Sources */,
 				13D3FEDB2C19B4F000D9179C /* ContentView.swift in Sources */,
 				13D3FED92C19B4F000D9179C /* mapApp.swift in Sources */,
 				13D3FF0D2C1AE38F00D9179C /* note.swift in Sources */,
+				13CFB6E82C1B7C5900474B92 /* NotificationView.swift in Sources */,
 				13D3FF162C1AE59600D9179C /* StackView.swift in Sources */,
+				13CFB6E42C1B7BD600474B92 /* DashboardView.swift in Sources */,
+				13CFB6EC2C1B7C9D00474B92 /* StarredView.swift in Sources */,
+				13CFB6E02C1B7B9B00474B92 /* DashboardContentArea.swift in Sources */,
 				13D3FF092C1AE21200D9179C /* canvas.swift in Sources */,
 				13D3FF112C1AE3EC00D9179C /* position.swift in Sources */,
+				13CFB6DB2C1B7B0400474B92 /* Sidebar.swift in Sources */,
 				13D3FF0F2C1AE3CA00D9179C /* style.swift in Sources */,
 				13D3FF182C1AE61300D9179C /* InfinityCanvas.swift in Sources */,
+				13CFB6E22C1B7BBE00474B92 /* HeaderView.swift in Sources */,
+				13CFB6E62C1B7C3200474B92 /* OverviewView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
