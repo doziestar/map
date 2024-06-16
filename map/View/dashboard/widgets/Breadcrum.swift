@@ -7,45 +7,50 @@
 
 import SwiftUI
 
-//struct BreadcrumbNavigation: View {
-//    var body: some View {
-//        HStack {
-//            Text("Projects")
-//                .foregroundColor(.white)
-//            Image(systemName: "chevron.right")
-//                .foregroundColor(.white)
-//            Text("Video Projects")
-//                .foregroundColor(.white)
-//            
-//            Spacer()
-//        }
-//        .padding(.horizontal)
-//        .padding(.top, 10)
-//    }
-//}
-
 struct BreadcrumbNavigation: View {
     @Binding var currentPath: [Folder]
 
     var body: some View {
         HStack {
+            Button(action: {
+                withAnimation {
+                    currentPath.removeAll()
+                }
+            }) {
+                HStack {
+                    Image(systemName: "house.fill")
+                        .foregroundColor(.folderSlateBlue)
+                    Text("Home")
+                        .foregroundColor(.folderDarkGreen)
+                }
+            }
+            .buttonStyle(PlainButtonStyle())
+
             ForEach(Array(currentPath.enumerated()), id: \.element) { index, folder in
                 HStack {
-                    if index > 0 {
-                        Text(">")
-                    }
+                    Text(">")
+                        .foregroundColor(.gray)
                     Button(action: {
-                        currentPath = Array(currentPath.prefix(index + 1))
+                        withAnimation {
+                            currentPath = Array(currentPath.prefix(index + 1))
+                        }
                     }) {
                         Text(folder.name)
-                            .foregroundColor(.blue)
+                            .foregroundColor(colorForIndex(index))
                     }
+                    .buttonStyle(PlainButtonStyle())
                 }
             }
         }
         .padding()
     }
+
+    private func colorForIndex(_ index: Int) -> Color {
+        let colors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple, .pink]
+        return colors[index % colors.count]
+    }
 }
+
 
 
 #Preview {

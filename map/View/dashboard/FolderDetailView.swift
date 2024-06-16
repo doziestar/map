@@ -6,93 +6,54 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct FolderDetailView: View {
     @State var folder: Folder
+    @Binding var currentPath: [Folder]
     @Environment(\.modelContext) private var context
 
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-                HStack(spacing: 10) {
-                    AnimatedButtonView(title: "+ Map") { input in
-                        print("Map added")
-                    }
-
+            ProjectFolderAndFileView(
+                isGridView: .constant(true),
+                currentPath: $currentPath,
+                folders: folder.subfolders
+            )
+            .navigationTitle(folder.name)
+            .toolbar {
+                ToolbarItem(placement: .automatic) {
                     AnimatedButtonView(title: "+ Folder") { input in
                         addSubfolder(name: input)
                     }
                 }
-                .padding(.trailing, 20)
             }
-            List {
-                Section(header: Text("Subfolders")) {
-                    ForEach(folder.subfolders) { subfolder in
-                        NavigationLink(destination: FolderDetailView(folder: subfolder)) {
-                            Text(subfolder.name)
-                        }
-                        .swipeActions {
-                            Button(role: .destructive) {
-                                deleteSubfolder(subfolder)
-                            } label: {
-                                Label("Delete", systemImage: "trash")
-                            }
-                        }
-                    }
-                }
-
-                Section(header: Text("Files")) {
-                    ForEach(folder.files) { file in
-                        NavigationLink(destination: FileDetailView(file: file)) {
-                            Text(file.name)
-                        }
-                        .swipeActions {
-                            Button(role: .destructive) {
-                                deleteFile(file)
-                            } label: {
-                                Label("Delete", systemImage: "trash")
-                            }
-                        }
-                    }
-                }
-            }
-            .navigationTitle(folder.name)
-            .toolbar {
-                ToolbarItem(placement: .automatic) {
-                    Button(action: editFolderName) {
-                        Text("Edit")
-                    }
-                }
+            .onAppear {
+                printDebugInfo()
             }
         }
     }
 
-    private func addSubfolder(name: String) {
-        let newSubfolder = Folder(name: name)
-        folder.subfolders.append(newSubfolder)
-        context.insert(newSubfolder)
-    }
-
-    private func deleteSubfolder(_ subfolder: Folder) {
-        if let index = folder.subfolders.firstIndex(where: { $0.id == subfolder.id }) {
-            folder.subfolders.remove(at: index)
-            context.delete(subfolder)
+    func addSubfolder(name: String) {
+        guard !name.isEmpty else {
+            print("Subfolder name cannot be empty.")
+            return
         }
+        
+        let newFolder = Folder(name: name, parentFolder: folder)
+        folder.subfolders.append(newFolder)
+        context.insert(newFolder)
+        printDebugInfo()
     }
 
-    private func deleteFile(_ file: File) {
-        if let index = folder.files.firstIndex(where: { $0.id == file.id }) {
-            folder.files.remove(at: index)
-            context.delete(file)
-        }
-    }
-
-    private func editFolderName() {
-        // Implement edit functionality
+    private func printDebugInfo() {
+        print("Current Path: \(currentPath.map { $0.name })")
+        print("Folder: \(folder.name)")
+        print("Subfolders: \(folder.subfolders.map { $0.name })")
     }
 }
 
 #Preview {
-    FolderDetailView(folder: Folder(name: "Example Folder"))
+    FolderDetailView(folder: Folder(name: "Sample"), currentPath: .constant([]))
 }
+
