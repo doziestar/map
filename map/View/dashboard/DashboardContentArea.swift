@@ -8,34 +8,32 @@
 import SwiftUI
 
 struct DashboardContentArea: View {
-    let folders = ["The Experiment - Script Arrangement", "The Experiment - Assets", "Atlanta", "Older Video Projects", "Home Videos"]
+        @Binding var selectedView: String
     
     var body: some View {
-        NavigationView {
-            VStack {
-                HStack {
-                    Text("Projects > Video Projects")
-                        .font(.headline)
-                    Spacer()
-                    TextField("Search text across all maps", text: .constant(""))
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .frame(maxWidth: 300)
-                }
-                .padding()
-                
-                ScrollView {
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))]) {
-                        ForEach(folders, id: \.self) { folder in
-                            FolderView(name: folder)
+                VStack {
+                        switch selectedView {
+                        case "Overview":
+                            MainDashboardOverview()
+                                .transition(.opacity)
+                        case "Notifications":
+                            NotificationView()
+                                .transition(.opacity)
+                        case "Settings":
+                            SettingsView()
+                                .transition(.opacity)
+                        default:
+                            Text("Select a view")
+                                .transition(.opacity)
                         }
                     }
-                }
-                .padding()
-            }
-            .navigationTitle("Video Projects")
+                    .animation(.easeInOut, value: selectedView)
+                
+            
         }
-    }
+    
 }
+
 #Preview {
-    DashboardContentArea()
+    DashboardContentArea(selectedView: .constant("Overview"))
 }

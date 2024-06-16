@@ -64,3 +64,23 @@ struct CanvasView: View {
         }
     }
 }
+
+
+struct CanvasView2: View {
+    @State private var notes: [NoteItem] = []
+    
+    @State private var selectedNote: NoteItem?
+    
+    var body: some View {
+        ZStack {
+            Canvas { context, size in
+                context.stroke(
+                    Path(ellipseIn: CGRect(origin: .zero, size: size)),
+                    with: .color(.green),
+                    lineWidth: 4)
+            }
+            .frame(width: 300, height: 200)
+            .border(Color.blue)
+        }
+    }
+}

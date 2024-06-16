@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     var body: some View {
         DashboardView()
+//            .environment(\.modelContext, ModelContext())
 //            .modelContainer(for: [Stack.self, Map.self], inMemory: true)
     }
 }

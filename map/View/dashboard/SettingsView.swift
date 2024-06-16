@@ -15,19 +15,21 @@ struct SettingsView: View {
                 .bold()
                 .padding()
 
-            Form {
-                Section(header: Text("Account")) {
-                    TextField("Username", text: .constant(""))
-                    SecureField("Password", text: .constant(""))
-                    Button("Save Changes") {
-                        // Handle save changes
+            ScrollView {
+                Form {
+                    Section(header: Text("Account")) {
+                        TextField("Username", text: .constant(""))
+                        SecureField("Password", text: .constant(""))
+                        Button("Save Changes") {
+                            // Handle save changes
+                        }
                     }
-                }
-                
-                Section(header: Text("Preferences")) {
-                    Toggle("Enable Notifications", isOn: .constant(true))
-                    Toggle("Dark Mode", isOn: .constant(false))
-                }
+                    
+                    Section(header: Text("Preferences")) {
+                        Toggle("Enable Notifications", isOn: .constant(true))
+                        Toggle("Dark Mode", isOn: .constant(false))
+                    }
+            }
             }
             .padding(.horizontal)
         }

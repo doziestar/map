@@ -8,14 +8,23 @@
 import SwiftUI
 
 struct DashboardView: View {
+    @State private var selectedView: String = "Overview"
+
     var body: some View {
         NavigationView {
-            Sidebar()
+            Sidebar(selectedView: $selectedView)
             VStack {
-                HeaderView()
-                DashboardContentArea()
+                HeaderBar(selectedView: $selectedView)
+                DashboardContentArea(selectedView: $selectedView)
+                    .animation(.easeInOut, value: selectedView)
             }
         }
+        .navigationViewStyle(DoubleColumnNavigationViewStyle())
+        .background(
+            Image("background2")
+                .resizable()
+                .edgesIgnoringSafeArea(.all)
+        )
     }
 }
 #Preview {

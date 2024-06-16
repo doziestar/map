@@ -21,7 +21,7 @@ struct NotificationView: View {
                         HStack {
                             Circle()
                                 .frame(width: 10, height: 10)
-                                .foregroundColor(.blue)
+                                .foregroundColor(.mainSecondary)
                             Text("Notification details here")
                                 .padding(.vertical, 5)
                         }

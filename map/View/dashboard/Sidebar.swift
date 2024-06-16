@@ -7,41 +7,53 @@
 
 import SwiftUI
 
+
 struct Sidebar: View {
+    @State private var isQuickAccessCollapsed = false
+    @Binding var selectedView: String
+    
     var body: some View {
-        List {
-            Section(header: Text("Navigation")) {
-                NavigationLink(destination: OverviewView()) {
-                    Label("Overview", systemImage: "house")
-                }
-                NavigationLink(destination: NotificationView()) {
-                    Label("Notifications", systemImage: "bell")
-                }
-                NavigationLink(destination: SettingsView()) {
-                    Label("Settings", systemImage: "gear")
-                }
-            }
+        VStack(alignment: .leading) {
+            // Logo
+            Image("logo")
+                .resizable()
+                .frame(width: 40, height: 40)
+                .padding()
+                .frame(maxWidth: .infinity)
+                            
+            Spacer()
+            // Navigation Section
+            QuickNavigationView(selectedView: $selectedView)
+                .frame(maxWidth: .infinity)
+                .padding(.leading)
             
-            Section(header: Text("Quick Access")) {
-                NavigationLink(destination: StarredView()) {
-                    Label("Starred", systemImage: "star")
-                }
-            }
+            // Quick Access Section
+            QuickAccessView()
+                .frame(maxWidth: .infinity)
             
-            Section(header: Text("Search")) {
-                HStack {
-                    TextField("Search Folders", text: .constant(""))
-                    Button(action: {
-                    }) {
-                        Image(systemName: "magnifyingglass")
-                    }
-                }
-            }
+            // Search Section
+            GlassmorphicSearchBar()
+                .frame(maxWidth: .infinity)
+            
+            
+            Spacer()
+            
+            // Logout Button
+            SidebarItem(icon: "arrowshape.turn.up.left", title: "Log Out", isSelected: false) {
+                        }
+            .padding(.bottom)
+            .frame(maxWidth: .infinity)
         }
-        .listStyle(SidebarListStyle())
+        .background(
+            Image("darkHeaderImage")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        )
+//        .frame(maxWidth: 250)
     }
 }
 
+
 #Preview {
-    Sidebar()
+    Sidebar(selectedView: .constant("Overview"))
 }

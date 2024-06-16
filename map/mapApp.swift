@@ -12,9 +12,8 @@ import SwiftData
 struct mapApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-//            NoteItem.self,
-//            Stack.self,
-//            Map.self,
+            Folder.self,
+            File.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
